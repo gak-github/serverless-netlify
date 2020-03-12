@@ -20,7 +20,8 @@
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
-    "serverless-http": "^2.0.2"
+    "serverless-http": "^2.0.2",
+    "mongoose": "^5.9.3"
   },
   "devDependencies": {
     "netlify-lambda": "^1.6.3",
