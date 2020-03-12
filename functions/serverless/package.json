@@ -1,5 +1,5 @@
 {
-  "name": "oauth-passport",
+  "name": "serverless-express",
   "version": "1.0.0",
   "description": "netlify functions:create - template for Oauth workflow using Passport + Express.js",
   "main": "serverless.js",
