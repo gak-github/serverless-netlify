@@ -1,4 +1,5 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+
 const connectDB = async () => {
   try {
     const MONGO_URI = "mongodb+srv://ashok:ashok123@mern-stack-tw5cv.mongodb.net/expensetracker?retryWrites=true&w=majority";
@@ -13,6 +14,6 @@ const connectDB = async () => {
     console.log(`Error: ${error.message}`);
     process.exit(1)
   }
-}
+};
 
-module.exports = connectDB
+module.exports = connectDB;

@@ -5,8 +5,8 @@ import IncomeExpenses from "../components/IncomeExpenses";
 import TransactionList from "../components/TransactionList";
 import AddTransaction from "../components/AddTransaction";
 import { GlobalProvider } from "../context/GlobalState";
-import SEO from "../components/SEO"
-import Header from "../components/Header"
+import SEO from "../components/SEO";
+import Header from "../components/Header";
 
 function IndexPage() {
   return (
