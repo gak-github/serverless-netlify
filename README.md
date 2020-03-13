@@ -8,7 +8,7 @@
   A MERN Stack project built and deployed using Gatsby+Netlify+Serverless
 </h2>
 ## Introduction
-It is a sample project started with MERN stack, inspired by Brad Traversy's crash course on YT [React Hooks and Context API](https://www.youtube.com/watch?v=XuFDcZABiDQ&t=674s) and then converted into [MERN stack](https://www.youtube.com/watch?v=KyWaXA_NvT0). Once having a full stack web application running locally, decided to deploy into Netlify(I admire Gatsby and Netlify Engineers). 
+It is a sample project started with MERN stack, inspired by Brad Traversy's crash course on YT React Hooks and Context API [YT link](https://www.youtube.com/watch?v=XuFDcZABiDQ&t=674s) and then converted into MERN stack  [YT link](https://www.youtube.com/watch?v=KyWaXA_NvT0). Once having a full stack web application running locally, decided to deploy into Netlify(I admire Gatsby and Netlify Engineers). 
 
 Although we have several templates/sample applications available for netlify+serverless (lambda), I couldn't find a code reference for a full stack applicatiom using [Gatsby](https://www.gatsbyjs.org/)+[Netlify](https://www.netlify.com/)+Serverless with Express Routes. Here I am sharing the steps which I followed to have a full fledged web application hosted freely on Netlify.
 
@@ -104,4 +104,6 @@ It will build and open the browser with http://localhost:8888 and you can add/de
 You can navigate my code and mostly self explanatory.
 
 While running locally, **please make sure you are replacing the MongoDB URL in /functions/express/config/db.js MONGO_URI with yours**. You can [create an account with Mongo cloud](https://www.mongodb.com/cloud/atlas/signup). For more details please watch Brad's YouTube [course](https://www.youtube.com/watch?v=KyWaXA_NvT0)
+
+This project can be seen [HERE](https://agurusamy-serverless.netlify.com). 
 <!-- AUTO-GENERATED-CONTENT:END -->
