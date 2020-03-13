@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/App.css";
-import SEO from "../components/Seo";
+import SEO from "../components/SEO";
 import Header from "../components/Header";
 import Balance from "../components/Balance";
 import IncomeExpenses from "../components/IncomeExpenses";
