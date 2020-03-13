@@ -1,21 +1,26 @@
 import React from "react"
-import { Link } from "gatsby"
+import "../styles/App.css"
+import SEO from "../components/Seo"
+import Header from "../components/Header"
+import Balance from "../components/Balance"
+import IncomeExpenses from "../components/IncomeExpenses"
+import TransactionList from "../components/TransactionList"
+import AddTransaction from "../components/AddTransaction"
+import { GlobalProvider } from "../context/GlobalState"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+function IndexPage() {
+  return (
+    <GlobalProvider>
+      <SEO title="Home" />
+      <Header />
+      <div className="container">
+        <Balance />
+        <IncomeExpenses />
+        <TransactionList />
+        <AddTransaction />
+      </div>
+    </GlobalProvider>
+  )
+}
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
-
-export default IndexPage
+export default IndexPage;
