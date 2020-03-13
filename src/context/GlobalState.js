@@ -1,6 +1,6 @@
-import React, { createContext, useReducer }; from "react"
+import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
-import axios from "axios"
+import axios from "axios";
 
 // Initial state
 const initialState = {
@@ -20,11 +20,11 @@ export const GlobalProvider = ({ children }) => {
   // get transaction details
   async function getTransactions() {
     try {
-      const res = await axios.get("/api/v1/transactions")
+      const res = await axios.get("/.netlify/functions/express");
       dispatch({
         type: "GET_TRANSACTIONS",
         payload: res.data.data,
-      })
+      });
     } catch (error) {
       dispatch({
         type: "TRANSACTION_ERROR",
@@ -35,11 +35,11 @@ export const GlobalProvider = ({ children }) => {
   // delet action reducer
   async function deleteTransaction(id) {
     try {
-      await axios.delete(`/api/v1/transactions/${id}`)
+      await axios.delete(`/.netlify/functions/express/${id}`);
       dispatch({
         type: "DELETE_TRANSACTION",
         payload: id,
-      })
+      });
     } catch (error) {
       dispatch({
         type: "TRANSACTION_ERROR",
@@ -54,10 +54,10 @@ export const GlobalProvider = ({ children }) => {
       headers: {
         "Content-Type": "application/json",
       },
-    }
+    };
 
     try {
-      const res = await axios.post("/api/v1/transactions", transaction, config)
+      const res = await axios.post("/.netlify/functions/express", transaction, config);
       dispatch({
         type: "ADD_TRANSACTION",
         payload: res.data.data,
