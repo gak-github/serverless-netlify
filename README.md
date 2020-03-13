@@ -105,5 +105,5 @@ You can navigate my code and mostly self explanatory.
 
 While running locally, **please make sure you are replacing the MongoDB URL in /functions/express/config/db.js MONGO_URI with yours**. You can [create an account with Mongo cloud](https://www.mongodb.com/cloud/atlas/signup). For more details please watch Brad's YouTube [course](https://www.youtube.com/watch?v=KyWaXA_NvT0)
 
-This project can be seen [HERE](https://agurusamy-serverless.netlify.com). 
+This project can be seen at [https://agurusamy-serverless.netlify.com](https://agurusamy-serverless.netlify.com). 
 <!-- AUTO-GENERATED-CONTENT:END -->
