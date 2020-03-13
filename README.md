@@ -4,13 +4,13 @@
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
   </a>
 </p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+<h2 align="center">
+  A MERN Stack project built and deployed using Gatsby+Netlify+Serverless
+</h2>
+## Introduction
+It is a sample project started with MERN stack, inspired by Brad Traversy's crash course on YT [React Hooks and Context API](https://www.youtube.com/watch?v=XuFDcZABiDQ&t=674s) and then converted into [MERN stack](https://www.youtube.com/watch?v=KyWaXA_NvT0). Once having a full stack web application running locally, decided to deploy into Netlify(I admire Gatsby and Netlify Engineers). 
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
-
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+Although we have several templates/sample applications available for netlify+serverless (lambda), I couldn't find a code reference for a full stack applicatiom using [Gatsby](https://www.gatsbyjs.org/)+[Netlify](https://www.netlify.com/)+Serverless with Express Routes. Here I am sharing the steps which I followed to have a full fledged web application hosted freely on Netlify.
 
 ## 🚀 Quick start
 
@@ -24,76 +24,84 @@ _Have another more specific idea? You may want to check out our vibrant collecti
     ```
 
 1.  **Start developing.**
-
+    ***1. Gatsby site***
     Navigate into your new site’s directory and start it up.
 
     ```shell
     cd my-default-starter/
     gatsby develop
     ```
+    Your Gatsby site is now running at `http://localhost:8000` by default.
+    You can delete all the default stuff and keep a blank page with a Hello World! message. Please push this code into github (master branch) and create a free account with [Netlify](https://www.netlify.com). Login into Netlify and follow the steps to deploy a site directly from GitHub. Assumping that your Gatsby site is now hosted and running on Netlify. Let us go to the next step now.
+    <bb>
+    ***2. Netlify setup***
+      Install Netlify CLI and login:
+      
+      ```shell
+        npm i -g netlify-cli
+        
+        netlify login # to link your free Netlify account
+      ```
+    Create your Netlify instance for your Gatsby site:
+      ```
+      netlify init
+      ```
+       You will be prompted for a "build command", which for Gatsby is npm run build, and a "publish directory", which for Gatsby is public. You can also save this in a <b>netlify.toml</b> config file, or the CLI will create it for you:
+      ```
+      [build]
+        command = "npm run build"
+        functions = "functions"
+        publish = "public"
+      ```
+      As you can see in the above example, We'll also specify where we'll save our functions (the value "functions" indicates that we are going to create the serverless functions under a directory called "functions" from the root directory.
 
-1.  **Open the source code and start editing!**
+      <br>
+      Create your first Netlify Function: Netlify CLI has a set of templates available to help you get started writing serverless functions. Just run:
+      
+      ```
+      netlify functions:create # ntl functions:create also works
+      ```
+      You'll be presented with an autocomplete list. You can pick the `token-hider` example for now. Once you select it, the CLI will copy out the necessary files, and install the necessary axios dependencies.
 
-    Your site is now running at `http://localhost:8000`!
+      Notice that token-hider.js includes this line:
+      ```
+      const { API_SECRET = "shiba" } = process.env
+      
+      ```
+      This is meant to simulate API secrets that you don't want to expose to the frontend. You can set these as build environment variables on your site's Netlify Dashboard. You can name them whatever you like, and for the purposes of our demo I've provided a default, but of course feel free to modify as I have done in this repo under ["functions"](https://github.com/gak-github/serverless-netlify/tree/master/functions) directory. You can have multiple directories under "functions" but each should be having one default "handler" functions exported.
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+      Install netlify-lambda as dev dependency
+      ```
+      npm i -D netlify-lambda
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+      ```
+      And add a postinstall script in package.json (this isn't Netlify specific, it is part of how npm works):
 
-## 🧐 What's inside?
+        "scripts": {
+          "postinstall": "netlify-lambda install"
+        },
+      Fire up Gatsby and Functions with Netlify Dev
+      Netlify Dev is the local proxy server embedded in the CLI that we will use to develop our Functions alongside our Gatsby app. You can start it like so:
+      ```
+      netlify dev # or ntl dev
+      ```
+      Your Gatsby app will now be accessible at http://localhost:8888 and your function will be accessible at http://localhost:8888/.netlify/functions/token-hider. Check it out in your browser!
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+      Now you are free to add react components and more business logic to "functions" directory.
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+##How to run my project
+```
+git clone https://github.com/gak-github/serverless-netlify.git
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+cd serverless-netlify
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+npm install
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+netlify dev
+```
+It will build and open the browser with http://localhost:8888 and you can add/delete the expense details. It will be persisted into MongoDB.
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+You can navigate my code and mostly self explanatory.
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
-
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
-
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
-
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
-
+While running locally, **please make sure you are replacing the MongoDB URL in /functions/express/config/db.js MONGO_URI with yours**. You can [create an account with Mongo cloud](https://www.mongodb.com/cloud/atlas/signup). For more details please watch Brad's YouTube [course](https://www.youtube.com/watch?v=KyWaXA_NvT0)
 <!-- AUTO-GENERATED-CONTENT:END -->

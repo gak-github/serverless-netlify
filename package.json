@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "serverless-netlify",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "A sample full stack application using Gatsby+Netlify+Express+Serverless",
+  "version": "1.0.0",
+  "author": "Asokumar Gurusamy",
   "dependencies": {
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
@@ -29,7 +29,11 @@
     "prettier": "^1.19.1"
   },
   "keywords": [
-    "gatsby"
+    "serverless",
+    "express",
+    "netlify",
+    "full stack on netlify",
+    "gatsby+netlify+serverless"
   ],
   "license": "MIT",
   "scripts": {
