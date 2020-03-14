@@ -7,10 +7,10 @@
 <h2 align="center">
   A MERN Stack project built and deployed using Gatsby+Netlify+Serverless
 </h2>
-## Introduction
-It is a sample project started with MERN stack, inspired by Brad Traversy's crash course on YT React Hooks and Context API [YT link](https://www.youtube.com/watch?v=XuFDcZABiDQ&t=674s) and then converted into MERN stack  [YT link](https://www.youtube.com/watch?v=KyWaXA_NvT0). Once having a full stack web application running locally, decided to deploy into Netlify(I admire Gatsby and Netlify Engineers). 
+##Introduction
+It is a sample project started with MERN stack, inspired by Brad Traversy's crash course on YT React Hooks and Context API [YT link](https://www.youtube.com/watch?v=XuFDcZABiDQ&t=674s) and then converted into MERN stack  [YT link](https://www.youtube.com/watch?v=KyWaXA_NvT0). Once having a full stack web application running locally, decided to deploy into Netlify(an amazing platform). 
 
-Although we have several templates/sample applications available for netlify+serverless (lambda), I couldn't find a code reference for a full stack applicatiom using [Gatsby](https://www.gatsbyjs.org/)+[Netlify](https://www.netlify.com/)+Serverless with Express Routes. Here I am sharing the steps which I followed to have a full fledged web application hosted freely on Netlify.
+Although we have several templates/sample applications available for netlify+serverless (lambda), I couldn't find a code reference for a full stack applicatiom using [Gatsby](https://www.gatsbyjs.org/)+[Netlify](https://www.netlify.com/)+Serverless with Express Routes. Here I am sharing the steps which I followed to have a full stack web application hosted on Netlify.
 
 ## 🚀 Quick start
 

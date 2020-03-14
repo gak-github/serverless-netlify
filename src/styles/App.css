@@ -26,12 +26,49 @@ body {
 
 h1 {
   letter-spacing: 1px;
+}
+a {
+  align-items: center;
+  margin-bottom: 0;
+}
+
+img {
   margin: 0;
+  padding-left: 20px;
+  height: 35px;
+  width: 50px;
+  padding-top: 10px;
+  margint-top: 50px;
+}
+
+.top-head {
+  width: 100%;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+  margin-bottom: 50px;
+}
+
+img:hover {
+  cursor: pointer;
+  transform: scale(0.85);
+}
+
+h2 {
+  display: flex;
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin: 20px auto;
+  background-color: rgb(89, 121, 189);
+  width: 350px;
+  justify-content: center;
 }
 
 h3 {
   border-bottom: 1px solid #bbb;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   margin: 40px 0 10px;
 }
 
